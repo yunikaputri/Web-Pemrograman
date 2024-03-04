@@ -54,4 +54,11 @@ $a /= $b;
 echo "Nilai A setelah operasi pembagian: " . $a . "<br>";
 $a %= $b;
 echo "Nilai A setelah operasi modulus: " . $a . "<br>";
+
+// Membandingkan dan mencetak dua variabel menggunakan operator identitas 
+$hasilIdentik = $a === $b;
+$hasilTidakIdentik = $a !== $b;
+
+echo "Hasil Identik: " . $hasilIdentik . "<br>";
+echo "Hasil Tidak Identik: " . $hasilTidakIdentik . "<br>";
 ?>
