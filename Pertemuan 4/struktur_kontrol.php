@@ -25,4 +25,17 @@ while ($jarakSaatIni < $jarakTarget) {
 }
 
 echo "Atlet tersebut memerlukan $hari hari untuk mencapai jarak 500 kilomter.";
+echo "<br><br>";
+
+// Menghitung dan mencetak total buah yang akan dipanen
+$jumlahLahan = 10;
+$tanamanPerlahan = 5;
+$buahPerTanaman = 10;
+$jumlahBuah = 0;
+
+for ($i = 1; $i <= $jumlahLahan; $i++) {
+    $jumlahBuah += ($tanamanPerlahan * $buahPerTanaman);
+}
+
+echo "Jumlah buah yang akan dipanen adalah: $jumlahBuah";
 ?>
