@@ -11,8 +11,8 @@ echo "Variabel c: {$c} <br>";
 echo "Variabel d: {$d} <br>";
 echo "Variabel e: {$e} <br>";
 
-var_dump($e);
-
+var_dump($e); 
+echo "<br>";
 $nilaiMatematika = 5.1;
 $nilaiIPA = 6.7;
 $nilaiBahasaIndonesia = 9.3;
@@ -28,11 +28,11 @@ var_dump($rataRata);
 
 $apakahSiswaLulus = true;
 $apakahSiswaSudahUjian = false;
-
+echo "<br>";
 var_dump($apakahSiswaLulus);
 echo "<br>";
 var_dump($apakahSiswaSudahUjian);
-
+echo "<br>";
 $namaDepan = "Ibnu";
 $namaBelakang = 'Jakarta';
 
@@ -43,4 +43,7 @@ echo "Nama Depan: {$namaDepan} <br>";
 echo 'Nama Belakang:  ' . $namaBelakang .  "<br>";
 
 echo $namaLengkap;
+
+$listMahasiswa = ["Wahid Andullah", "Elmo Bachtiar", "Lendis Fabri"];
+echo $listMahasiswa[0]
 ?>
