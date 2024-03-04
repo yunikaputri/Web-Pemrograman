@@ -78,5 +78,18 @@ $rataRata = $totalNilai / count($nilaiTotal);
 
 echo "Daftar nilai siswa: " . implode(", ", $nilaiSiswa) . "<br>";
 echo "Total nilai setelah mengabaikan dua nilai tertinggi dan dua nilai terendah: $totalNilai <br>";
-echo "Rata-rata nilai setelah mengabaikan dua nilai tertinggi dan dua nilai terendah: $rataRata <br>";
+echo "Rata-rata nilai setelah mengabaikan dua nilai tertinggi dan dua nilai terendah: $rataRata <br><br>";
+
+// Menghitung dan mencetak harga yang harus dibayar setelah mendapatkan diskon
+$hargaProduk = 120000;
+$batasDiskon = 100000;
+$diskon = 20;
+
+if ($hargaProduk > $batasDiskon) {
+    $hargaSetelahDiskon = $hargaProduk - ($hargaProduk * ($diskon / 100));
+} else {
+    $hargaSetelahDiskon = $hargaProduk;
+}
+echo "Harga produk sebelum diskon: Rp $hargaProduk <br>";
+echo "Harga produk setelah diskon: Rp $hargaSetelahDiskon <br>";
 ?>
