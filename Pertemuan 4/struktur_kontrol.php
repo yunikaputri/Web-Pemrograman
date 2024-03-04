@@ -91,5 +91,14 @@ if ($hargaProduk > $batasDiskon) {
     $hargaSetelahDiskon = $hargaProduk;
 }
 echo "Harga produk sebelum diskon: Rp $hargaProduk <br>";
-echo "Harga produk setelah diskon: Rp $hargaSetelahDiskon <br>";
+echo "Harga produk setelah diskon: Rp $hargaSetelahDiskon <br><br>";
+
+/* Membuat tampilan baris pertama “Total skor pemain adalah: (poin)”. 
+Dan baris kedua “Apakah pemain mendapatkan hadiah tambahan? (YA/TIDAK)” */
+$poin = 600;
+$totalSkor = $poin;
+
+$mendapatkanHadiah = ($totalSkor > 500) ? "YA": "TIDAK";
+echo "Total skor pemain adalah: $totalSkor <br>";
+echo "Apakah pemain mendapatkan hadiah tambahan? $mendapatkanHadiah";
 ?>
