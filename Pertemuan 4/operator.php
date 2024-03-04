@@ -17,7 +17,7 @@ echo "Hasil Pembagian: $a / $b = $hasilBagi <br>";
 echo "Sisa Pembagian: $a % $b = $sisaBagi <br>";
 echo "Hasil Perpangkatan: $a ^ $b = $pangkat <br>";
 
-// Membandingkan dua variabel 
+// Membandingkan dan mencetak dua variabel 
 $hasilSama = $a == $b;
 $hasilTidakSama = $a != $b;
 $hasilLebihKecil = $a < $b;
@@ -42,4 +42,16 @@ echo "Hasil AND Logis: " . $hasilAnd . "<br>";
 echo "Hasil OR Logis: " . $hasilOr . "<br>";
 echo "Hasil NOT Logis A: " . $hasilNotA . "<br>";
 echo "Hasil NOT Logis B: " . $hasilNotB . "<br>";
+
+// Mengganti dan mencetak nilai variabel $a dengan hasil operasi dengan variabel $b
+$a += $b;
+echo "Nilai A setelah operasi penambahan: " . $a . "<br>";
+$a -= $b;
+echo "Nilai A setelah operasi pengurangan: " . $a . "<br>";
+$a *= $b;
+echo "Nilai A setelah operasi perkalian: " . $a . "<br>";
+$a /= $b;
+echo "Nilai A setelah operasi pembagian: " . $a . "<br>";
+$a %= $b;
+echo "Nilai A setelah operasi modulus: " . $a . "<br>";
 ?>
