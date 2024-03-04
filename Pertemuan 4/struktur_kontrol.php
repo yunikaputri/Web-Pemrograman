@@ -61,4 +61,22 @@ foreach ($nilaiSiswa as $nilai) {
     }
     echo "Nilai: $nilai (Lulus) <br>";
 }
+echo "<br>";
+
+// Soal cerita: menghitung total nilai yang akan digunakan untuk menentukan nilai rata-rata setelah mengabaikan nilai tertinggi dan terendah
+$nilaiSiswa = [85, 92, 78, 64, 90, 75, 88, 79, 70, 96];
+
+sort($nilaiSiswa);
+
+$jumlahNilai = count($nilaiSiswa);
+$nilaiTerabaikan = 2;
+$nilaiTotal = array_slice($nilaiSiswa, $nilaiTerabaikan, $jumlahNilai - (2 * $nilaiTerabaikan));
+
+$totalNilai = array_sum($nilaiTotal);
+
+$rataRata = $totalNilai / count($nilaiTotal);
+
+echo "Daftar nilai siswa: " . implode(", ", $nilaiSiswa) . "<br>";
+echo "Total nilai setelah mengabaikan dua nilai tertinggi dan dua nilai terendah: $totalNilai <br>";
+echo "Rata-rata nilai setelah mengabaikan dua nilai tertinggi dan dua nilai terendah: $rataRata <br>";
 ?>
