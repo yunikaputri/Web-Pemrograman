@@ -31,4 +31,15 @@ echo "Hasil Lebih Kecil: " . $hasilLebihKecil . "<br>";
 echo "Hasil Lebih Besar: " . $hasilLebihBesar . "<br>";
 echo "Hasil Lebih Kecil Sama: " . $hasilLebihKecilSama . "<br>";
 echo "Hasil Lebih Besar Sama: " . $hasilLebihBesarSama . "<br>";
+
+// Menghasilkan dan mencetak nilai boolean berdasarkan kondisi dari variabel
+$hasilAnd = $a && $b;
+$hasilOr = $a || $b;
+$hasilNotA = !$a;
+$hasilNotB = !$b;
+
+echo "Hasil AND Logis: " . $hasilAnd . "<br>";
+echo "Hasil OR Logis: " . $hasilOr . "<br>";
+echo "Hasil NOT Logis A: " . $hasilNotA . "<br>";
+echo "Hasil NOT Logis B: " . $hasilNotB . "<br>";
 ?>
