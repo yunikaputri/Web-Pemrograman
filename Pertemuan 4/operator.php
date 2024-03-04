@@ -16,6 +16,7 @@ echo "Hasil Perkalian: $a * $b = $hasilKali <br>";
 echo "Hasil Pembagian: $a / $b = $hasilBagi <br>";
 echo "Sisa Pembagian: $a % $b = $sisaBagi <br>";
 echo "Hasil Perpangkatan: $a ^ $b = $pangkat <br>";
+echo "<br>";
 
 // Membandingkan dan mencetak dua variabel 
 $hasilSama = $a == $b;
@@ -31,6 +32,7 @@ echo "Hasil Lebih Kecil: " . $hasilLebihKecil . "<br>";
 echo "Hasil Lebih Besar: " . $hasilLebihBesar . "<br>";
 echo "Hasil Lebih Kecil Sama: " . $hasilLebihKecilSama . "<br>";
 echo "Hasil Lebih Besar Sama: " . $hasilLebihBesarSama . "<br>";
+echo "<br>";
 
 // Menghasilkan dan mencetak nilai boolean berdasarkan kondisi dari variabel
 $hasilAnd = $a && $b;
@@ -42,6 +44,7 @@ echo "Hasil AND Logis: " . $hasilAnd . "<br>";
 echo "Hasil OR Logis: " . $hasilOr . "<br>";
 echo "Hasil NOT Logis A: " . $hasilNotA . "<br>";
 echo "Hasil NOT Logis B: " . $hasilNotB . "<br>";
+echo "<br>";
 
 // Mengganti dan mencetak nilai variabel $a dengan hasil operasi dengan variabel $b
 $a += $b;
@@ -54,6 +57,7 @@ $a /= $b;
 echo "Nilai A setelah operasi pembagian: " . $a . "<br>";
 $a %= $b;
 echo "Nilai A setelah operasi modulus: " . $a . "<br>";
+echo "<br>";
 
 // Membandingkan dan mencetak dua variabel menggunakan operator identitas 
 $hasilIdentik = $a === $b;
@@ -61,4 +65,15 @@ $hasilTidakIdentik = $a !== $b;
 
 echo "Hasil Identik: " . $hasilIdentik . "<br>";
 echo "Hasil Tidak Identik: " . $hasilTidakIdentik . "<br>";
+echo "<br>";
+
+// Soal cerita: menghitung persen kursi yang masih kosong di restoran
+$totalKursi = 45;
+$kursiDitempati = 28;
+
+$kursiKosong = $totalKursi - $kursiDitempati;
+$persentaseKursiKosong = ($kursiKosong / $totalKursi) * 100;
+
+echo "Jumlah kursi kosong: " . $kursiKosong . "<br>";
+echo "Presentase kursi kosong: " . $persentaseKursiKosong = ($kursiKosong / $totalKursi) * 100 . "%" . "<br>";
 ?>
