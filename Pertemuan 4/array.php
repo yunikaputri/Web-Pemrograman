@@ -59,4 +59,31 @@ echo "Daftar nilai mahasiswa dalam mata kuliah $mataKuliah: <br>";
 foreach ($daftarNilai[$mataKuliah] as $nilai) {
     echo "Nama: {$nilai[0]}, Nilai: {$nilai[1]} <br>";
 }
+echo "<br>";
+
+// Soal cerita: mencetak daftar nilai siswa yang mencapai nilai di atas rata-rata kelas
+$nilaiSiswa = [
+    ["nama" => "Alice", "nilai" => 85],
+    ["nama" => "Bob", "nilai" => 92],
+    ["nama" => "Charlie", "nilai" => 78],
+    ["nama" => "David", "nilai" => 64],
+    ["nama" => "Eva", "nilai" => 90],
+];
+
+$totalNilai = 0;
+$jumlahSiswa = count($nilaiSiswa);
+
+foreach ($nilaiSiswa as $siswa) {
+    $totalNilai += $siswa ["nilai"];
+}
+
+$rataRataKelas = $totalNilai / $jumlahSiswa;
+
+echo "Daftar nilai siswa di atas rata-rata kelas:<br>";
+
+foreach ($nilaiSiswa as $siswa) {
+    if ($siswa["nilai"] > $rataRataKelas) { 
+        echo "Nama: " . $siswa["nama"] . ", Nilai: " . $siswa["nilai"] . "<br>";
+    }
+}
 ?>
