@@ -66,10 +66,10 @@ function hitungUmur($thn_lahir, $thn_sekarang){
         echo "Perkenalkan, nama saya ".$nama."<br/>";
        
         // memanggil fungsi laik
-        echo "Saya berusia ". hitungUmur(2003, 2024)." tahun<br/>";
+        echo "Saya berusia ". hitungUmur(2004, 2024)." tahun<br/>";
         echo "Senang berkenalan dengan anda<br/>";
     }
         
     // memanggil fungsi perkenalan 
-    perkenalan("Nabilah");
+    perkenalan("Yunika");
 ?>
