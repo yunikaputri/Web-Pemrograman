@@ -5,7 +5,7 @@ $pesan = "Saya arek Probolinggo";
 echo strrev($pesan) . "<br>";
 
 
-// membalik String lagi
+// membalik string perkata
 $pesan = "Saya arek Probolinggo";
 # ubah variabel $pesan menjadi array dengan perintah explode
 $pesanPerKata = explode(" ", $pesan);
