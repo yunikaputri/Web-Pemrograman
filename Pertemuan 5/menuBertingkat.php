@@ -34,11 +34,25 @@ $menu = [
     ]
 ];
 
-// fungsi untuk menampilkan array
+// // fungsi untuk menampilkan array
+// function tampilkanMenuBertingkat (array $menu) {
+//     echo "<ul>";
+//     foreach ($menu as $key => $item) {
+//         echo "<li>{$item['nama']}</li>";
+//     }
+//     echo "</ul>";
+//     }
+//     tampilkanMenuBertingkat($menu);
+
+
+// fungsi array dengan subMenu
 function tampilkanMenuBertingkat (array $menu) {
     echo "<ul>";
     foreach ($menu as $key => $item) {
         echo "<li>{$item['nama']}</li>";
+        if (isset($item['subMenu'])){
+            tampilkanMenuBertingkat($item['subMenu']);
+        }
     }
     echo "</ul>";
     }
