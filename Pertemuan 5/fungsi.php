@@ -45,13 +45,31 @@
 // //memanggil lagi tanpa mengisi parameter salam perkenalan 
 // perkenalan($saya);
 
-// fungsi mengembangkan nilai
-// membuat fungsi
-function hitungUmur($thn_lahir, $thn_sekarang) {
-    $umur = $thn_sekarang - $thn_lahir;
-    return $umur;    
-}
+// // fungsi mengembangkan nilai
+// // membuat fungsi
+// function hitungUmur($thn_lahir, $thn_sekarang) {
+//     $umur = $thn_sekarang - $thn_lahir;
+//     return $umur;    
+// }
 
-// isi sesuai dengan tahun lahir kalian
-echo "Umur saya adalah ". hitungUmur (2004, 2024). " tahun" 
+// // isi sesuai dengan tahun lahir kalian
+// echo "Umur saya adalah ". hitungUmur (2004, 2024). " tahun"
+
+// fungsi memanggil fungsi dalam fungsi
+function hitungUmur($thn_lahir, $thn_sekarang){
+    $umur = $thn_sekarang-$thn_lahir; 
+    return $umur;
+    }
+    
+    function perkenalan($nama, $salam="Assalamualaikum") { 
+        echo $salam.",";
+        echo "Perkenalkan, nama saya ".$nama."<br/>";
+       
+        // memanggil fungsi laik
+        echo "Saya berusia ". hitungUmur(2003, 2024)." tahun<br/>";
+        echo "Senang berkenalan dengan anda<br/>";
+    }
+        
+    // memanggil fungsi perkenalan 
+    perkenalan("Nabilah");
 ?>
