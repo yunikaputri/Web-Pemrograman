@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Informasi Dosen</title>
+    <link rel="stylesheet" type="text/css" href="stylearray2.css">
 </head>
 <body>
     <?php
@@ -11,11 +12,21 @@
         $Dosen = [
             'nama' => 'Elok Nur Hamdana',
             'domisili' => 'Malang',
-            'jenis_kelamin' => 'Perempuan'];
-
-        echo "Nama : {$Dosen ['nama']}<br>";
-        echo "Domisili : {$Dosen ['domisili']}<br>";
-        echo "Jenis Kelamin : {$Dosen ['jenis_kelamin']}<br>";
+            'jenis_kelamin' => 'Perempuan'
+        ];
     ?>
+    <h2>Informasi Dosen</h2>
+    <table>
+        <tr>
+            <th>Informasi</th>
+            <th>Detail</th>
+        </tr>
+        <?php foreach ($Dosen as $key => $value): ?>
+            <tr>
+                <td><?= ucwords(str_replace('_', ' ', $key)) ?></td>
+                <td><?= $value ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 </body>
 </html>
