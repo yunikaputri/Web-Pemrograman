@@ -11,7 +11,7 @@
         // echo $ListDosen[0] . "<br>";
         // echo $ListDosen[1] . "<br>";
 
-        // menampilakn array menggunakan indeks perulangan
+        // menampilkann array menggunakan indeks perulangan
         $ListDosen = ["Elok Nur Hamdana", "Unggul Pamenang", "Bagas Nugraha"];
         foreach ($ListDosen as $dosen) {
             echo $dosen . "<br>";
