@@ -16,7 +16,7 @@
                 $movie = array(
                     array("Avengers: Invinity War", 2018, 8.7),
                     array("The Avengers",2012, 8.1),
-                    array("Guardians of the Galaxy", 201, 8.1),
+                    array("Guardians of the Galaxy", 2014, 8.1),
                     array("Iron Man", 2008, 7.9)
                 );
                 echo "<tr>";
