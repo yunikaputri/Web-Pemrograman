@@ -7,7 +7,7 @@
 </head>
 <body>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        Input: <input type="text" name="input">
+        Input: <input type="text" name="Yunika">
         <input type="submit" value="Submit">
     </form>
 
@@ -15,7 +15,7 @@
     // Memeriksa apakah form sudah disubmit menggunakan metode POST
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Mengambil nilai input dari form dan menghindari serangan XSS
-        $input = $_POST['input'];
+        $input = $_POST['Yunika'];
         $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
         // Menampilkan input yang dimasukkan
         echo "Input yang dimasukkan: " . $input;
