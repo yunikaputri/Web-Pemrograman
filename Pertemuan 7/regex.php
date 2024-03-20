@@ -23,4 +23,13 @@ $replacement = 'banana';
 $text = '<br/>I like apple pie. ';
 $new_text = preg_replace($pattern, $replacement, $text);
 echo $new_text; // Output: "I like banana pie."
+
+// Mencocokkan pola yang memiliki nol atau lebih karakter "o" di antara "g" dan "d".
+$pattern = '/go*d/'; // Cocokkan "god", "good", "gooood", dll.
+$text = 'god is good. ';
+if (preg_match($pattern, $text, $matches) ) {
+    echo "<br/>Cocokkan: " . $matches[0];
+} else {
+    echo "Tidak ada yang cocok!";
+}
 ?>
