@@ -16,4 +16,11 @@ if (preg_match($pattern, $text, $matches) ) {
 } else {
     echo "Tidak ada yang cocok!";
 }
+
+// Mengganti setiap kemunculan pola 'apple' dengan kata 'banana' dalam teks.
+$pattern = '/apple/';
+$replacement = 'banana';
+$text = '<br/>I like apple pie. ';
+$new_text = preg_replace($pattern, $replacement, $text);
+echo $new_text; // Output: "I like banana pie."
 ?>
