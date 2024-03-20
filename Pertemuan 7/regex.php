@@ -32,4 +32,13 @@ if (preg_match($pattern, $text, $matches) ) {
 } else {
     echo "Tidak ada yang cocok!";
 }
+
+// Mencocokkan pola yang memiliki nol atau lebih karakter "o" di antara "g" dan "d".
+$pattern = '/go?d/'; // Cocokkan "god", "good", "gooood", dll.
+$text = 'god is good. ';
+if (preg_match($pattern, $text, $matches) ) {
+    echo "<br/>Cocokkan: " . $matches[0];
+} else {
+    echo "Tidak ada yang cocok!";
+}
 ?>
