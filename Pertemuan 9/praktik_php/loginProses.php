@@ -1,22 +1,20 @@
 <?php
-    // Mengecek login pengguna dengan mengambil data dari formulir login, memeriksa dengan database, dan menampilkan pesan keberhasilan atau kegagalan login
     include "koneksi.php";
-
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
+    $password = md5 ($_POST['password']);
 
     $query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
     $result = mysqli_query($connect, $query);
-    $cek = mysqli_num_rows($result);
+    $cek = mysqli_num_rows ($result);
 
     if ($cek) {
-        echo "Anda berhasil login. Silahkan menuju"; ?>
-        <a href='homeAdmin.html'>Halaman HOME</a>;
+        echo "Anda berhasil login. silahkan menuju "; ?>
+        <a href="homeAdmin.html">Halaman HOME</a>
     <?php
-    } else {
-        echo "Anda gagal login. Silahkan"; ?>
-        <a href='loginForm.html'>Login kembali</a>;
+    }else{
+        echo "Anda gagal login. silahkan "; ?>
+        <a href="loginForm.html">Login kembali</a>
     <?php
-        echo mysqli_error($connect);
+        echo mysqli_error($connect) ;
     }
 ?>
