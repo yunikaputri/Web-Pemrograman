@@ -1,23 +1,19 @@
-<html>
-    <head>
-    </head>
-    <body>
-        <!-- Form untuk login yang akan mengirim data ke halaman loginProses.php menggunakan metode POST -->
-        <form action="loginProses.php" method="post">
-            <table>
-                <tr>
-                    <td>Username</td>
-                    <td><input type="text" name="username" size="20"></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" name="password" size="20"></td>
-                </tr>
-                <tr>
-                    <td>&nbsp ;< /td>
-                    <td><input type="submit" name="Login" value="Proses"></td>
-                </tr>
-            </table>
-        </form>
-    </body>
-</html>
+<?php
+// Menghubungkan aplikasi PHP ke basis data MySQL dan menampilkan pesan koneksi berhasil jika berhasil dilakukan
+// Deklarasi variabel
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "prakwebdb";
+
+// Buat koneksi
+$connect = mysqli_connect($host, $user, $password, $dbname);
+
+// Periksa koneksi
+if (!$connect) {
+die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Tampilkan pesan sukses
+echo "Koneksi berhasil!";
+?>
