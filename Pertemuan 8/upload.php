@@ -1,7 +1,7 @@
 <?php
 // Mengelola unggahan file dari form_upload.php
 if (isset($_POST["submit"])) {
-    $targetDirectory = "/dasarWeb/Pertemuan 8"; // Direktori tujuan untuk menyimpan file
+    $targetDirectory = "C:/xampp/htdocs/dasarWeb/Pertemuan 8/"; // Ganti dengan path yang sesuai
     $targetFile = $targetDirectory . basename($_FILES["fileToUpload"]["name"]);
 
     // Memberikan pesan sukses atau gagal sesuai dengan hasilnya
