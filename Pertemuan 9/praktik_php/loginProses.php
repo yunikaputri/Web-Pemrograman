@@ -1,4 +1,5 @@
 <?php
+// Mengecek login pengguna dengan mengambil data dari formulir login, memeriksa dengan database, dan menampilkan pesan keberhasilan atau kegagalan login
     include "koneksi.php";
     $username = $_POST['username'];
     $password = md5 ($_POST['password']);
