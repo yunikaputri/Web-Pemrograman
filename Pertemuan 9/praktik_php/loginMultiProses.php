@@ -13,7 +13,7 @@
         <a href="homeAdmin.html">Halaman HOME</a>
     <?php
     } else if ($row['level'] == 2) {
-        echo "Anda gagal login. silahkan menuju "; ?>
+        echo "Anda berhasil login. silahkan menuju "; ?>
         <a href="homeGuest.html">Halaman Home</a>
     <?php
     } else {
