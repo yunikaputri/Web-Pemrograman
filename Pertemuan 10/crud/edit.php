@@ -21,7 +21,7 @@
             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
             <div class="form-group">
                 <label for="nama">Nama:</label>
-                <input type="text" class="form-control" id="nama" value="<?php echo $row['nama']; ?>" required>
+                <input type="text" class="form-control" name="nama" id="nama" value="<?php echo $row['nama']; ?>" required>
             </div>
             
             <div class="form-group">
