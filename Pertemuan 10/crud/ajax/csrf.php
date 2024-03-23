@@ -14,3 +14,4 @@ if (isset($headers['Csrf-Token'])) {
 } else {
     exit(json_encode(['error' => 'No CSRF token']));
 }
+?>
