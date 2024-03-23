@@ -96,3 +96,22 @@
         });
     });
 </script>
+<script>
+    // Menghapus data anggota berdasarkan ID menggunakan AJAX dan memuat ulang data setelah penghapusan berhasil
+    $(document).on('click', '.hapus_data', function() {
+        var id = $(this).attr('id');
+        $.ajax({
+            type: 'POST',
+            url: "hapus_data.php",
+            data: {
+                id: i
+            },
+            success: function() {
+                $('.data').load("data.php");
+            },
+            error: function(response) {
+                console.log(response.responseText)
+            }
+        });
+    });
+</script>
