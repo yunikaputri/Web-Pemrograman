@@ -1,23 +1,24 @@
 <?php
-// Mengambil data anggota dari database berdasarkan ID yang diberikan dan mengembalikan data dalam format JSON
+// Memulai sesi, mengambil koneksi database, dan memberikan respons JSON dengan data anggota berdasarkan ID yang diberikan
 session_start();
-include "koneksi.php";
-include "csrf.php";
+include 'koneksi.php';
 
-$id = $_POST['id'];
-$query = "SELECT * FROM anggota WHERE id = ? ORDER BY id DESC";
-$sql = $db1->prepare($query);
-$sql->bind_param('i', $id);
-$sql->execute();
-$res1 = $sql->get_result();
-while ($row = $res1->fetch_assoc()) {
-    $h['id'] = $row['id'];
-    $h['nama'] = $row['nama'];
-    $h['jenis_kelamin'] = $row['jenis_kelamin'];
-    $h['alamat'] = $row['alamat'];
-    $h['no_telp'] = $row['no_telp'];
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+    $query = "SELECT * FROM anggota WHERE id=?";
+    $sql = $db1->prepare($query);
+    $sql->bind_param('i', $id);
+    $sql->execute();
+    $result = $sql->get_result();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        echo json_encode($row);
+    } else {
+        echo json_encode(['error' => 'Data tidak ditemukan']);
+    }
+} else {
+    echo json_encode(['error' => 'ID tidak ditemukan']);
 }
-echo json_encode($h);
 
 $db1->close();
 ?>
