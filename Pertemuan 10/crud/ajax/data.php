@@ -53,3 +53,46 @@
         $('#example').DataTable();
     });
 </script>
+
+<!-- Menginisialisasi plugin DataTable pada tabel dengan id "example" -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+
+    // Menyediakan fungsi untuk mereset pesan kesalahan saat mengedit data
+    function reset() {
+        document.getElementById("err_nama").innerHTML = "";
+        document.getElementById("err_jenis_kelamin").innerHTML = "";
+        document.getElementById("err_alamat").innerHTML = "";
+        document.getElementById("err_no_telp").innerHTML = "";
+    }
+
+    // Mengirimkan permintaan AJAX untuk mengambil data dari server berdasarkan ID untuk diedit
+    $(document).on('click', '.edit_data', function() {
+        $('html, body').animate({scrollTop: 0}, 'slow');
+        var id = $(this).attr('id');
+        $.ajax({
+            type: 'POST',
+            url: "get_data.php",
+            data: {id: id},
+            dataType: 'json',
+            success: function(response) {
+                reset();
+                $('html, body').animate({scrollTop: 30}, 'slow');
+                document.getElementById("id").value = response.id;
+                document.getElementById("nama").value = response.nama;
+                document.getElementById("alamat").value = response.alamat;
+                document.getElementById("no_telp").value = response.no_telp;
+                if (response.jenis_kelamin == "L") {
+                    document.getElementById("jenkel1").checked = true;
+                } else {
+                    document.getElementById("jenkel2").checked = true;
+                }
+            },
+            error: function(response) {
+                console.log(response.responseText);
+            }
+        });
+    });
+</script>
