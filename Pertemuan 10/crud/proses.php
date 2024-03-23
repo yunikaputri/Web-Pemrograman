@@ -22,7 +22,7 @@ if ($aksi == 'tambah') {
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
 
-        $query = "UPDATE anggora SET nama='$nama', jenis_kelamin='$jenis_kelamin', alamat='$alamat', no_telp='$no_telp' WHERE id = $id";
+        $query = "UPDATE anggota SET nama='$nama', jenis_kelamin='$jenis_kelamin', alamat='$alamat', no_telp='$no_telp' WHERE id = $id";
         if (mysqli_query($koneksi, $query)) {
             header("Location: index.php");
             exit();
@@ -32,6 +32,24 @@ if ($aksi == 'tambah') {
     } else {
         echo "ID tidak valid.";
     }
+} else if ($aksi == 'hapus') {
+    // Mengatur proses penghapusan data anggota berdasarkan ID
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+
+        $query = "DELETE FROM anggota WHERE id = $id";
+
+        if (mysqli_query($koneksi, $query)) {
+            header("Location: index.php");
+            exit();
+        } else {
+            echo "Gagal menghapus data: " . mysqli_error($koneksi);
+        }
+    } else {
+        echo "ID tidak valid.";
+    }
+} else {
+    header("Location: index.php");
 }
 mysqli_close($koneksi);
 ?>
