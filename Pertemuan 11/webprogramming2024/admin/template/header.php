@@ -8,15 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Aplikasi Kantor Siapa</title>
+    <title>Aplikasi Kantor Yunika</title>
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
 
     
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
-<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
