@@ -15,10 +15,9 @@ include 'fungsi/pesan_kilat.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <meta name="author" content="Tyase Nisa'an Jamilaa">
+  <meta name="author" content="Yunika Puteri Dwi Antika">
   <meta name="generator" content="Hugo 0.118.2">
-  <title>Aplikasi Kantor Tyase</title>
-
+  <title>Aplikasi Kantor Yunika</title>
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
