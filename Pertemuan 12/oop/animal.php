@@ -1,46 +1,86 @@
 <?php
-// Membuat inheritance pewarisan parent class Animal ke subclass Cat
+// // Membuat inheritance pewarisan parent class Animal ke subclass Cat
+// class Animal
+// {
+//     protected $name;
+
+//     public function __construct($name)
+//     {
+//         $this -> name = $name;
+//     }
+
+//     public function eat()
+//     {
+//         echo $this -> name . " is eating.<br>";
+//     }
+
+//     public function sleep()
+//     {
+//         echo $this -> name . " is sleeping.<br>";
+//     }
+// }
+
+// class Cat extends Animal
+// {
+//     public function meow()
+//     {
+//         echo $this -> name . " says meow!<br>";
+//     }
+// }
+
+// class Dog extends Animal
+// {
+//     public function bark()
+//     {
+//         echo $this -> name . " says woof!<br>";
+//     }
+// }
+
+// $cat = new Cat("Whiskers");
+// $dog = new Dog("Buddy");
+
+// $cat -> eat();
+// $dog -> sleep();
+
+// $cat -> meow();
+// $dog -> bark();
+
+
+
+// ENCAPSULATION AND ACCESS MODIFIERS
+// Mendefinisikan atribut dengan level akses masing-masing dan menyediakan metode untuk mengakses nilai properti tersebut
 class Animal
 {
-    protected $name;
+    public $name;
+    protected $age;
+    private $color;
 
-    public function __construct($name)
+    public function __construct($name, $age, $color)
     {
         $this -> name = $name;
+        $this -> age = $age;
+        $this -> color = $color;
     }
 
-    public function eat()
+    public function getName()
     {
-        echo $this -> name . " is eating.<br>";
+        return $this -> name;
     }
 
-    public function sleep()
+    public function getAge()
     {
-        echo $this -> name . " is sleeping.<br>";
+        return $this -> age;
+    }
+
+    public function getColor()
+    {
+        return $this -> color;
     }
 }
 
-class Cat extends Animal
-{
-    public function meow()
-    {
-        echo $this -> name . " says meow!<br>";
-    }
-}
+$animal = new Animal("Dog", 3, "Brown");
 
-class Dog extends Animal
-{
-    public function bark()
-    {
-        echo $this -> name . " says woof!<br>";
-    }
-}
-
-$cat = new Cat("Whiskers");
-$dog = new Dog("Buddy");
-
-$cat -> eat();
-$dog -> sleep();
-
-$cat -> meow();
-$dog -> bark();
+echo "Name: " . $animal -> name . "<br>";
+echo "Age: " . $animal -> getAge() . "<br>";
+echo "Color: " . $animal -> getColor() . "<br>";
+?>
