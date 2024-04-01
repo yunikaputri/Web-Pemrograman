@@ -1,4 +1,5 @@
 <?php 
+// Mendefinisikan atribut model dan color, serta menyediakan metode untuk mengakses dan mengubah nilai atribut
 class Car
 {
     private $model;
