@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beasiswa Unggulan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fungsi untuk menyimpan nilai formulir ke dalam cookies
+            function setFormCookies() {
+                // Ambil nilai-nilai formulir
+                var essai = $("textarea[name='essai']").val();
+                var surat_rekomendasi = $("input[name='surat_rekomendasi']").val();
+                var surat_sptmbl = $("input[name='surat_sptmbl']").val();
+                var sertifikat_kemampuan_bindo = $("input[name='sertifikat_kemampuan_bindo']").val();
+
+                // Simpan nilai-nilai formulir ke dalam cookies
+                document.cookie = "essai=" + essai + ";";
+                document.cookie = "surat_rekomendasi=" + surat_rekomendasi + ";";
+                document.cookie = "surat_sptmbl=" + surat_sptmbl + ";";
+                document.cookie = "sertifikat_kemampuan_bindo=" + sertifikat_kemampuan_bindo + ";";
+            }
+
+            // Fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            function fillFormFromCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim().split("=");
+                    var name = cookie[0];
+                    var value = cookie[1];
+                    // Isi nilai formulir dari cookies jika ditemukan sesuai dengan nama input
+                    if (name === "essai") $("textarea[name='essai']").val(value);
+                    else if (name === "surat_rekomendasi") $("input[name='surat_rekomendasi']").val(value);
+                    else if (name === "surat_sptmbl") $("input[name='surat_sptmbl']").val(value);
+                    else if (name === "sertifikat_kemampuan_bindo") $("input[name='sertifikat_kemampuan_bindo']").val(value);
+                }
+            }
+
+            // Panggil fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            fillFormFromCookies();
+
+            $('form[name="formBerkas"]').submit(function(event){
+                // Panggil fungsi untuk menyimpan nilai formulir ke dalam cookies sebelum submit
+                setFormCookies();
+
+                // Validasi formulir       
+                var essai = $("textarea[name='essai']").val();
+                var surat_rekomendasi = $("input[name='surat_rekomendasi']").val();
+                var surat_sptmbl = $("input[name='surat_sptmbl']").val();
+                var sertifikat_kemampuan_bindo = $("input[name='sertifikat_kemampuan_bindo']").val();
+
+                if (essai.trim() == "") {
+                    alert("Essai harus diisi");
+                    return false;
+                }
+                if (surat_rekomendasi.trim() == "") {
+                    alert("File Surat Rekomendasi harus diisi");
+                    return false;
+                }
+                if (surat_sptmbl.trim() == "") {
+                    alert("File Surat Pernyataan Tidak Menerima Beasiswa Lain harus diisi");
+                    return false;
+                }
+                if (sertifikat_kemampuan_bindo.trim() == "") {
+                    alert("File Sertifikat Kemampuan Bahasa Indonesia harus diisi");
+                    return false;
+                }
+                return true; // Lanjutkan submit jika semua validasi lolos
+            });
+        });
+    </script>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo">
+        <h1>SIUNGGUL</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Pengajuan Beasiswa 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="pengajuan_beasiswa.html">Beasiswa Tujuan</a>
+                    <a href="pengajuan_beasiswa.php">Data Beasiswa Tujuan</a>
+                </div>
+                <div class="submenu">
+                    <a href="daftar_biaya.html">Daftar Biaya</a>
+                    <a href="daftar_biaya.php">Data Daftar Biaya</a>
+                </div>
+                <div class="submenu">
+                    <a href="berkas_persyaratan.html">Berkas Persyaratan</a>
+                    <a href="berkas_persyaratan.php">Data Berkas Persyaratan</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Biodata 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="biodata.html">Form Diri</a>
+                    <a href="biodata.php">Data Diri</a>
+                </div>
+                <div class="submenu">
+                    <a href="orang_tua.html">Form Orang Tua</a>
+                    <a href="orang_tua.php">Data Orang Tua</a>
+                </div>
+                <div class="submenu">
+                    <a href="organisasi.html">Organisasi</a>
+                    <a href="organisasi.php">Data Organisasi</a>
+                </div>
+                <div class="submenu">
+                    <a href="prestasi.html">Prestasi</a>
+                    <a href="prestasi.php">Data Prestasi</a>
+                </div>
+            </div>
+        </div>
+        <a href="index.html">Beranda</a>
+    </div>
+
+    <form name="formBerkas" method="POST" action="berkas_persyaratan.php">
+        <h4>Form Berkas Persyaratan</h4>
+        <label for="essai">Essai:</label><br>
+        <textarea name="essai" rows="5" cols="50"></textarea><br><br>
+
+        <label for="surat_rekomendasi">File Surat Rekomendasi:</label><br>
+        <input type="file" name="surat_rekomendasi" accept="image/*"><br><br>
+
+        <label for="surat_sptmbl">File Surat Pernyataan Tidak Menerima Beasiswa Lain:</label><br>
+        <input type="file" name="surat_sptmbl" accept="image/*"><br><br>
+
+        <label for="sertifikat_kemampuan_bindo">File Sertifikat Kemampuan Bahasa Indonesia:</label><br>
+        <input type="file" name="sertifikat_kemampuan_bindo" accept="image/*"><br><br>
+
+        <input type="submit" id="submit" value="Submit"/>
+    </form>
+</body>
+</html>

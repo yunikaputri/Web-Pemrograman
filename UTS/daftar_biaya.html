@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beasiswa Unggulan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fungsi untuk menyimpan nilai formulir ke dalam cookies
+            function setFormCookies() {
+                // Ambil nilai-nilai formulir
+                var nama_biaya = $("input[name='nama_biaya']").val();
+                var nominal = $("input[name='nominal']").val();
+                var lampiran_biaya = $("input[name='lampiran_biaya']").val();
+
+                // Simpan nilai-nilai formulir ke dalam cookies
+                document.cookie = "nama_biaya=" + nama_biaya + ";";
+                document.cookie = "nominal=" + nominal + ";";
+                document.cookie = "lampiran_biaya=" + lampiran_biaya + ";";
+            }
+
+            // Fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            function fillFormFromCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim().split("=");
+                    var name = cookie[0];
+                    var value = cookie[1];
+                    // Isi nilai formulir dari cookies jika ditemukan sesuai dengan nama input
+                    if (name === "nama_biaya") $("input[name='nama_biaya']").val(value);
+                    else if (name === "nominal") $("input[name='nominal']").val(value);
+                    else if (name === "lampiran_biaya") $("input[name='lampiran_biaya']").val(value);
+                }
+            }
+
+            // Panggil fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            fillFormFromCookies();
+
+            $('form[name="formBiaya"]').submit(function(event){
+                // Panggil fungsi untuk menyimpan nilai formulir ke dalam cookies sebelum submit
+                setFormCookies();
+
+                // Validasi formulir 
+                var nama_biaya = $("input[name='nama_biaya']").val();
+                var nominal = $("input[name='nominal']").val();
+                var lampiran_biaya = $("input[name='lampiran_biaya']").val();
+
+                if (nama_biaya.trim() == "") {
+                    alert("Nama Biaya harus diisi");
+                    return false;
+                }
+                if (nominal.trim() == "") {
+                    alert("Nominal harus diisi");
+                    return false;
+                }
+                if (lampiran_biaya.trim() == "") {
+                    alert("Lampiran Biaya harus diisi");
+                    return false;
+                }
+                return true; // Lanjutkan submit jika semua validasi lolos
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo">
+        <h1>SIUNGGUL</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Pengajuan Beasiswa 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="pengajuan_beasiswa.html">Beasiswa Tujuan</a>
+                    <a href="pengajuan_beasiswa.php">Data Beasiswa Tujuan</a>
+                </div>
+                <div class="submenu">
+                    <a href="daftar_biaya.html">Daftar Biaya</a>
+                    <a href="daftar_biaya.php">Data Daftar Biaya</a>
+                </div>
+                <div class="submenu">
+                    <a href="berkas_persyaratan.html">Berkas Persyaratan</a>
+                    <a href="berkas_persyaratan.php">Data Berkas Persyaratan</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Biodata 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="biodata.html">Form Diri</a>
+                    <a href="biodata.php">Data Diri</a>
+                </div>
+                <div class="submenu">
+                    <a href="orang_tua.html">Form Orang Tua</a>
+                    <a href="orang_tua.php">Data Orang Tua</a>
+                </div>
+                <div class="submenu">
+                    <a href="nama_biaya.html">nama_biaya</a>
+                    <a href="nama_biaya.php">Data nama_biaya</a>
+                </div>
+                <div class="submenu">
+                    <a href="prestasi.html">Prestasi</a>
+                    <a href="prestasi.php">Data Prestasi</a>
+                </div>
+            </div>
+        </div>
+        <a href="index.html">Beranda</a>
+    </div>
+
+    <form name="formBiaya" method="POST" action="daftar_biaya.php">
+        <h4>Form Daftar Biaya</h4>
+        <label for="nama_biaya">Nama Biaya:</label><br>
+        <input type="text" name="nama_biaya" size="30"><br><br>
+
+        <label for="nominal">Nominal:</label><br>
+        <input type="text" name="nominal" size="30"><br><br>
+
+        <label for="lampiran_biaya">Lampiran Biaya:</label><br>
+        <input type="file" name="lampiran_biaya" accept="image/*"><br><br>
+
+        <input type="submit" id="submit" value="Submit"/>
+    </form>
+</body>
+</html>

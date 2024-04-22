@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beasiswa Unggulan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fungsi untuk menyimpan nilai formulir ke dalam cookies
+            function setFormCookies() {
+                // Ambil nilai-nilai formulir
+                var organisasi = $("input[name='organisasi']").val();
+                var bidang = $("input[name='bidang']").val();
+                var jabatan = $("input[name='jabatan']").val();
+                var tahun_masuk = $("input[name='tahun_masuk']").val();
+                var status = $("select[name='status']").val();
+
+                // Simpan nilai-nilai formulir ke dalam cookies
+                document.cookie = "organisasi=" + organisasi + ";";
+                document.cookie = "bidang=" + bidang + ";";
+                document.cookie = "jabatan=" + jabatan + ";";
+                document.cookie = "tahun_masuk=" + tahun_masuk + ";";
+                document.cookie = "status=" + status + ";";
+            }
+
+            // Fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            function fillFormFromCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim().split("=");
+                    var name = cookie[0];
+                    var value = cookie[1];
+                    // Isi nilai formulir dari cookies jika ditemukan sesuai dengan nama input
+                    if (name === "organisasi") $("input[name='organisasi']").val(value);
+                    else if (name === "bidang") $("input[name='bidang']").val(value);
+                    else if (name === "jabatan") $("input[name='jabatan']").val(value);
+                    else if (name === "tahun_masuk") $("input[name='tahun_masuk']").val(value);
+                    else if (name === "status") $("select[name='status']").val(value);
+                }
+            }
+
+            // Panggil fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            fillFormFromCookies();
+
+            $('form[name="formOrganisasi"]').submit(function(event){
+                // Panggil fungsi untuk menyimpan nilai formulir ke dalam cookies sebelum submit
+                setFormCookies();
+
+                // Validasi formulir
+                var organisasi = $("input[name='organisasi']").val();
+                var bidang = $("input[name='bidang']").val();
+                var jabatan = $("input[name='jabatan']").val();
+                var tahun_masuk = $("input[name='tahun_masuk']").val();
+                var status = $("select[name='status']").val();
+
+                if (organisasi.trim() == "") {
+                    alert("Organisasi harus diisi");
+                    return false;
+                }
+                if (bidang.trim() == "") {
+                    alert("Bidang harus diisi");
+                    return false;
+                }
+                if (jabatan.trim() == "") {
+                    alert("Jabatan harus diisi");
+                    return false;
+                }
+                if (tahun_masuk() == "") {
+                    alert("Tahun Masuk harus diisi");
+                    return false;
+                }
+                if (status.trim() == "") {
+                    alert("Status harus diisi");
+                    return false;
+                }
+                return true; // Lanjutkan submit jika semua validasi lolos
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo">
+        <h1>SIUNGGUL</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Pengajuan Beasiswa 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="pengajuan_beasiswa.html">Beasiswa Tujuan</a>
+                    <a href="pengajuan_beasiswa.php">Data Beasiswa Tujuan</a>
+                </div>
+                <div class="submenu">
+                    <a href="daftar_biaya.html">Daftar Biaya</a>
+                    <a href="daftar_biaya.php">Data Daftar Biaya</a>
+                </div>
+                <div class="submenu">
+                    <a href="berkas_persyaratan.html">Berkas Persyaratan</a>
+                    <a href="berkas_persyaratan.php">Data Berkas Persyaratan</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Biodata 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="biodata.html">Form Diri</a>
+                    <a href="biodata.php">Data Diri</a>
+                </div>
+                <div class="submenu">
+                    <a href="orang_tua.html">Form Orang Tua</a>
+                    <a href="orang_tua.php">Data Orang Tua</a>
+                </div>
+                <div class="submenu">
+                    <a href="organisasi.html">Organisasi</a>
+                    <a href="organisasi.php">Data Organisasi</a>
+                </div>
+                <div class="submenu">
+                    <a href="prestasi.html">Prestasi</a>
+                    <a href="prestasi.php">Data Prestasi</a>
+                </div>
+            </div>
+        </div>
+        <a href="index.html">Beranda</a>
+    </div>
+
+    <form name="formOrganisasi" method="POST" action="organisasi.php" enctype="multipart/form-data">
+        <h4>Form Data Organisasi</h4>
+        <label for="organisasi">Organisasi:</label><br>
+        <input type="text" name="organisasi" size="30"><br><br>
+        
+        <label for="bidang">Bidang:</label><br>
+        <input type="text" name="bidang" size="30"><br><br>
+        
+        <label for="jabatan">Jabatan:</label><br>
+        <input type="text" name="jabatan" size="30"><br><br>
+        
+        <label for="tahun_masuk">Tahun Masuk:</label><br>
+        <input type="text" name="tahun_masuk" size="30"><br><br>
+        
+        <label for="status">Status:</label><br>
+        <select name="status">
+            <option value="" disabled selected>Pilih Status</option>
+            <option value="Aktif">Aktif</option>
+            <option value="Tidak Aktif">Tidak Aktif</option>
+        </select><br><br>
+
+        <input type="submit" id="submit" value="Submit"/>
+    </form>
+</body>
+</html>

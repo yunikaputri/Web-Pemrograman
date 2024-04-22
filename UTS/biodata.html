@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beasiswa Unggulan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fungsi untuk menyimpan nilai formulir ke dalam cookies
+            function setFormCookies() {
+                // Ambil nilai-nilai formulir
+                var nik = $("input[name='nik']").val();
+                var nama_lengkap = $("input[name='nama_lengkap']").val();
+                // var foto_diri = $("input[name='foto_diri']").val();
+                // var identitas_diri = $("input[name='identitas_diri']").val();
+                // var tempat_lahir = $("input[name='tempat_lahir']").val();
+                // var jenis_kelamin = $("select[name='jenis_kelamin']").val();
+                // var agama = $("select[name='agama']").val();
+                // var status_pernikahan = $("select[name='status_pernikahan']").val();
+                // var nomor_hp = $("input[name='nomor_hp']").val();
+                // var alamat_domisili = $("textarea[name='alamat_domisili']").val();
+                // var kartu_keluarga = $("input[name='kartu_keluarga']").val();
+                // var kategori_rumah = $("select[name='kategori_rumah']").val();
+                // var luas_rumah = $("input[name='luas_rumah']").val();
+                // var tagihan_listrik = $("input[name='tagihan_listrik']").val();
+                // var golongan_listrik = $("input[name='golongan_listrik']").val();
+
+                // Simpan nilai-nilai formulir ke dalam cookies
+                document.cookie = "nik=" + nik + ";";
+                document.cookie = "nama_lengkap=" + nama_lengkap + ";";
+                // document.cookie = "foto_diri=" + foto_diri + ";";
+                // document.cookie = "identitas_diri=" + identitas_diri + ";";
+                // document.cookie = "tempat_lahir=" + tempat_lahir + ";";
+                // document.cookie = "jenis_kelamin=" + jenis_kelamin + ";";
+                // document.cookie = "agama=" + agama + ";";
+                // document.cookie = "status_pernikahan=" + status_pernikahan + ";";
+                // document.cookie = "nomor_hp=" + nomor_hp + ";";
+                // document.cookie = "alamat_domisili=" + alamat_domisili + ";";
+                // document.cookie = "kartu_keluarga=" + kartu_keluarga + ";";
+                // document.cookie = "kategori_rumah=" + kategori_rumah + ";";
+                // document.cookie = "luas_rumah=" + luas_rumah + ";";
+                // document.cookie = "tagihan_listrik=" + tagihan_listrik + ";";
+                // document.cookie = "golongan_listrik=" + golongan_listrik + ";";
+            }
+
+            // Fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            function fillFormFromCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim().split("=");
+                    var name = cookie[0];
+                    var value = cookie[1];
+                    // Isi nilai formulir dari cookies jika ditemukan sesuai dengan nama input
+                    if (name === "nik") $("input[name='nik']").val(value);
+                    else if (name === "nama_lengkap") $("input[name='nama_lengkap']").val(value);
+                    // else if (name === "foto_diri") $("input[name='foto_diri']").val(value);
+                    // else if (name === "identitas_diri") $("input[name='identitas_diri']").val(value);
+                    // else if (name === "tempat_lahir") $("input[name='tempat_lahir']").val(value);
+                    // else if (name === "jenis_kelamin") $("select[name='jenis_kelamin']").val(value);
+                    // else if (name === "agama") $("select[name='agama']").val(value);
+                    // else if (name === "status_pernikahan") $("select[name='status_pernikahan']").val(value);
+                    // else if (name === "nomor_hp") $("input[name='nomor_hp']").val(value);
+                    // else if (name === "alamat_domisili") $("textarea[name='alamat_domisili']").val(value);
+                    // else if (name === "kartu_keluarga") $("input[name='kartu_keluarga']").val(value);
+                    // else if (name === "kategori_rumah") $("select[name='kategori_rumah']").val(value);
+                    // else if (name === "luas_rumah") $("input[name='luas_rumah']").val(value);
+                    // else if (name === "tagihan_listrik") $("input[name='tagihan_listrik']").val(value);
+                    // else if (name === "golongan_listrik") $("input[name='golongan_listrik']").val(value);
+                }
+            }
+
+            // Panggil fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            fillFormFromCookies();
+
+            $('form[name="formBiodata"]').submit(function(event){
+                // Panggil fungsi untuk menyimpan nilai formulir ke dalam cookies sebelum submit
+                setFormCookies();
+
+                // Validasi formulir
+                var nik = $("input[name='nik']").val();
+                var nama_lengkap = $("input[name='nama_lengkap']").val();
+                var foto_diri = $("input[name='foto_diri']").val();
+                var identitas_diri = $("input[name='identitas_diri']").val();
+                var tempat_lahir = $("input[name='tempat_lahir']").val();
+                var jenis_kelamin = $("select[name='jenis_kelamin']").val();
+                var agama = $("select[name='agama']").val();
+                var status_pernikahan = $("select[name='status_pernikahan']").val();
+                var nomor_hp = $("input[name='nomor_hp']").val();
+                var alamat_domisili = $("textarea[name='alamat_domisili']").val();
+                var kartu_keluarga = $("input[name='kartu_keluarga']").val();
+                var kategori_rumah = $("select[name='kategori_rumah']").val();
+                var luas_rumah = $("input[name='luas_rumah']").val();
+                var tagihan_listrik = $("input[name='tagihan_listrik']").val();
+                var golongan_listrik = $("input[name='golongan_listrik']").val();
+
+                if (nik.trim() == "") {
+                    alert("NIK harus diisi");
+                    return false;
+                }
+                if (nama_lengkap.trim() == "") {
+                    alert("Nama Lengkap harus diisi");
+                    return false;
+                }
+                if (foto_diri.trim() == "") {
+                    alert("Foto harus diisi");
+                    return false;
+                }
+                if (identitas_diri.trim() == "") {
+                    alert("Identitas Diri harus diisi");
+                    return false;
+                }
+                if (tempat_lahir.trim() == "") {
+                    alert("Tempat Lahir harus diisi");
+                    return false;
+                }
+                if (jenis_kelamin.trim() == "") {
+                    alert("Jenis Kelamin harus diisi");
+                    return false;
+                }
+                if (agama.trim() == "") {
+                    alert("Agama harus diisi");
+                    return false;
+                }
+                if (status_pernikahan.trim() == "") {
+                    alert("Status Pernikahan harus diisi");
+                    return false;
+                }
+                if (nomor_hp.trim() == "") {
+                    alert("Nomor HP harus diisi");
+                    return false;
+                }
+                if (alamat_domisili.trim() == "") {
+                    alert("Alamat Domisili harus diisi");
+                    return false;
+                }
+                if (kartu_keluarga.trim() == "") {
+                    alert("Kartu Keluarga harus diisi");
+                    return false;
+                }
+                if (kategori_rumah.trim() == "") {
+                    alert("Kategori Rumah harus diisi");
+                    return false;
+                }
+                if (luas_rumah.trim() == "") {
+                    alert("Luas Rumah harus diisi");
+                    return false;
+                }
+                if (tagihan_listrik.trim() == "") {
+                    alert("Tagihan Listrik harus diisi");
+                    return false;
+                }
+                if (golongan_listrik.trim() == "") {
+                    alert("Golongan Listrik harus diisi");
+                    return false;
+                }
+                return true; // Lanjutkan submit jika semua validasi lolos
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo">
+        <h1>SIUNGGUL</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Pengajuan Beasiswa 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="pengajuan_beasiswa.html">Beasiswa Tujuan</a>
+                    <a href="pengajuan_beasiswa.php">Data Beasiswa Tujuan</a>
+                </div>
+                <div class="submenu">
+                    <a href="daftar_biaya.html">Daftar Biaya</a>
+                    <a href="daftar_biaya.php">Data Daftar Biaya</a>
+                </div>
+                <div class="submenu">
+                    <a href="berkas_persyaratan.html">Berkas Persyaratan</a>
+                    <a href="berkas_persyaratan.php">Data Berkas Persyaratan</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Biodata 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="biodata.html">Form Diri</a>
+                    <a href="biodata.php">Data Diri</a>
+                </div>
+                <div class="submenu">
+                    <a href="orang_tua.html">Form Orang Tua</a>
+                    <a href="orang_tua.php">Data Orang Tua</a>
+                </div>
+                <div class="submenu">
+                    <a href="organisasi.html">Organisasi</a>
+                    <a href="organisasi.php">Data Organisasi</a>
+                </div>
+                <div class="submenu">
+                    <a href="prestasi.html">Prestasi</a>
+                    <a href="prestasi.php">Data Prestasi</a>
+                </div>
+            </div>
+        </div>
+        <a href="index.html">Beranda</a>
+    </div>
+
+    <form name="formBiodata" method="POST" action="biodata.php">
+        <h4>Form Pendaftaran Beasiswa Unggulan</h4>
+        <label for="nik">NIK:</label><br>
+        <input type="text" name="nik" size="30"><br><br>
+
+        <label for="nama_lengkap">Nama Lengkap:</label><br>
+        <input type="text" name="nama_lengkap" size="30"><br><br>
+
+        <label for="foto_diri">Foto Diri:</label><br>
+        <input type="file" name="foto_diri" accept="image/*"><br><br>
+
+        <label for="identitas_diri">Identitas Diri (Scan KTP/SIM):</label><br>
+        <input type="file" name="identitas_diri" accept="image/*"><br><br>
+
+        <label for="tempat_lahir">Tempat Lahir:</label><br>
+        <input type="text" name="tempat_lahir" size="30"><br><br>
+
+        <label for="jenis_kelamin">Jenis Kelamin:</label><br>
+        <select name="jenis_kelamin">
+            <option value="" disabled selected>Pilih Jenis Kelamin</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select><br><br>
+
+        <label for="agama">Agama:</label><br>
+        <select name="agama">
+            <option value="" disabled selected>Pilih Agama</option>
+            <option value="Islam">Islam</option>
+            <option value="Kristen">Kristen</option>
+            <option value="Katolik">Katolik</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Buddha">Buddha</option>
+            <option value="Konghucu">Konghucu</option>
+        </select><br><br>
+
+        <label for="status_pernikahan">Status Pernikahan:</label><br>
+        <select name="status_pernikahan">
+            <option value="" disabled selected>Pilih Status Pernikahan</option>
+            <option value="Belum Menikah">Belum Menikah</option>
+            <option value="Menikah">Menikah</option>
+            <option value="Cerai">Cerai</option>
+        </select><br><br>
+
+        <label for="nomor_hp">Nomor HP:</label><br>
+        <input type="text" name="nomor_hp" size="30"><br><br>
+
+        <label for="alamat_domisili">Alamat Domisili:</label><br>
+        <textarea name="alamat_domisili" rows="4" cols="30"></textarea><br><br>
+
+        <label for="kartu_keluarga">Kartu Keluarga (Scan KK):</label><br>
+        <input type="file" name="kartu_keluarga" accept="image/*"><br><br>
+
+        <label for="kategori_rumah">Kategori Rumah Tinggal:</label><br>
+        <select name="kategori_rumah">
+            <option value="" disabled selected>Pilih Kategori Rumah</option>
+            <option value="Rumah Tinggal">Rumah Tinggal</option>
+            <option value="Apartemen">Apartemen</option>
+            <option value="Rumah Susun">Rumah Susun</option>
+            <option value="Kontrakan">Kontrakan</option>
+            <option value="Rumah Sewa">Rumah Sewa</option>
+        </select><br><br>
+
+        <label for="luas_rumah">Luas Rumah (m<sup>2</sup>):</label><br>
+        <input type="text" name="luas_rumah" size="30"><br><br>
+
+        <label for="tagihan_listrik">Tagihan Listrik:</label><br>
+        <input type="text" name="tagihan_listrik" size="30"><br><br>
+
+        <label for="golongan_listrik">Golongan Listrik:</label><br>
+        <input type="text" name="golongan_listrik" size="30"><br><br>
+
+        <input type="submit" id="submit" value="Submit"/>
+    </form>
+</body>
+</html>

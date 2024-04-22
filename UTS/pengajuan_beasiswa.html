@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beasiswa Unggulan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fungsi untuk menyimpan nilai formulir ke dalam cookies
+            function setFormCookies() {
+                // Ambil nilai-nilai formulir
+                var jenis_beasiswa = $("select[name='jenis_beasiswa']").val();
+                var jenjang = $("select[name='jenjang']").val();
+                var nim = $("input[name='nim']").val();
+                var perguruan_tinggi = $("input[name='perguruan_tinggi']").val();
+                var program_studi = $("input[name='program_studi']").val();
+                var ipk = $("input[name='ipk']").val();
+                var loa = $("input[name='loa']").val();
+                var surat_keterangan_aktif = $("input[name='surat_keterangan_aktif']").val();
+
+                // Simpan nilai-nilai formulir ke dalam cookies
+                document.cookie = "jenis_beasiswa=" + jenis_beasiswa + ";";
+                document.cookie = "jenjang=" + jenjang + ";";
+                document.cookie = "nim=" + nim + ";";
+                document.cookie = "perguruan_tinggi=" + perguruan_tinggi + ";";
+                document.cookie = "program_studi=" + program_studi + ";";
+                document.cookie = "ipk=" + ipk + ";";
+                document.cookie = "loa=" + loa + ";";
+                document.cookie = "surat_keterangan_aktif=" + surat_keterangan_aktif + ";";
+            }
+
+            // Fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            function fillFormFromCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim().split("=");
+                    var name = cookie[0];
+                    var value = cookie[1];
+                    // Isi nilai formulir dari cookies jika ditemukan sesuai dengan nama input
+                    if (name === "jenis_beasiswa") $("select[name='jenis_beasiswa']").val(value);
+                    else if (name === "jenjang") $("select[name='jenjang']").val(value);
+                    else if (name === "nim") $("input[name='nim']").val(value);
+                    else if (name === "perguruan_tinggi") $("input[name='perguruan_tinggi']").val(value);
+                    else if (name === "program_studi") $("input[name='program_studi']").val(value);
+                    else if (name === "ipk") $("input[name='ipk']").val(value);
+                    else if (name === "loa") $("input[name='loa']").val(value);
+                    else if (name === "surat_keterangan_aktif") $("input[name='surat_keterangan_aktif']").val(value);
+                }
+            }
+
+            // Panggil fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            fillFormFromCookies();
+
+            $('form[name="formPengajuan"]').submit(function(event){
+                // Panggil fungsi untuk menyimpan nilai formulir ke dalam cookies sebelum submit
+                setFormCookies();
+
+                // Validasi formulir     
+                var jenis_beasiswa = $("select[name='jenis_beasiswa']").val();
+                var jenjang = $("select[name='jenjang']").val();
+                var nim = $("input[name='nim']").val();
+                var perguruan_tinggi = $("input[name='perguruan_tinggi']").val();
+                var program_studi = $("input[name='program_studi']").val();
+                var ipk = $("input[name='ipk']").val();
+                var loa = $("input[name='loa']").val();
+                var surat_keterangan_aktif = $("input[name='surat_keterangan_aktif']").val();
+
+                if (jenis_beasiswa.trim() == "") {
+                    alert("Jenis Beasiswa harus diisi");
+                    return false;
+                }
+                if (jenjang.trim() == "") {
+                    alert("Jenjang harus diisi");
+                    return false;
+                }
+                if (nim.trim() == "") {
+                    alert("NIM harus diisi");
+                    return false;
+                }
+                if (perguruan_tinggi.trim() == "") {
+                    alert("Perguruan Tinggi harus diisi");
+                    return false;
+                }
+                if (program_studi.trim() == "") {
+                    alert("Program Studi harus diisi");
+                    return false;
+                }
+                if (ipk.trim() == "") {
+                    alert("IPK harus diisi");
+                    return false;
+                }
+                if (loa.trim() == "") {
+                    alert("LoA harus diisi");
+                    return false;
+                }
+                if (surat_keterangan_aktif.trim() == "") {
+                    alert("Surat Keterangan Aktif harus diisi");
+                    return false;
+                }
+                return true; // Lanjutkan submit jika semua validasi lolos
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo">
+        <h1>SIUNGGUL</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Pengajuan Beasiswa 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="pengajuan_beasiswa.html">Beasiswa Tujuan</a>
+                    <a href="pengajuan_beasiswa.php">Data Beasiswa Tujuan</a>
+                </div>
+                <div class="submenu">
+                    <a href="daftar_biaya.html">Daftar Biaya</a>
+                    <a href="daftar_biaya.php">Data Daftar Biaya</a>
+                </div>
+                <div class="submenu">
+                    <a href="berkas_persyaratan.html">Berkas Persyaratan</a>
+                    <a href="berkas_persyaratan.php">Data Berkas Persyaratan</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Biodata 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="biodata.html">Form Diri</a>
+                    <a href="biodata.php">Data Diri</a>
+                </div>
+                <div class="submenu">
+                    <a href="orang_tua.html">Form Orang Tua</a>
+                    <a href="orang_tua.php">Data Orang Tua</a>
+                </div>
+                <div class="submenu">
+                    <a href="organisasi.html">Organisasi</a>
+                    <a href="organisasi.php">Data Organisasi</a>
+                </div>
+                <div class="submenu">
+                    <a href="prestasi.html">Prestasi</a>
+                    <a href="prestasi.php">Data Prestasi</a>
+                </div>
+            </div>
+        </div>
+        <a href="index.html">Beranda</a>
+    </div>
+
+    <form name="formPengajuan" method="POST" action="pengajuan_beasiswa.php">
+        <h4>Form Beasiswa Tujuan</h4>
+        <label for="jenis_beasiswa">Jenis Beasiswa:</label><br>
+        <select name="jenis_beasiswa">
+            <option value="" disabled selected>Pilih Jenis Beasiswa</option>
+            <option value="Masyarakat Berprestasi">Masyarakat Berprestasi</option>
+            <option value="Pegawai Kemendikbud-Ristek">Pegawai Kemendikbud-Ristek</option>
+        </select><br><br>
+
+        <label for="jenjang">Jenjang:</label><br>
+        <select name="jenjang">
+            <option value="" disabled selected>Pilih Jenjang</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+        </select><br><br>
+
+        <label for="nim">NIM:</label><br>
+        <input type="text" name="nim" size="30"><br><br>
+
+        <label for="perguruan_tinggi">Perguruan Tinggi:</label><br>
+        <input type="text" name="perguruan_tinggi" size="30"><br><br>
+
+        <label for="program_studi">Program Studi:</label><br>
+        <input type="text" name="program_studi" size="30"><br><br>
+
+        <label for="ipk">IPK:</label><br>
+        <input type="text" name="ipk" size="30"><br><br>
+
+        <label for="loa">LoA:</label><br>
+        <input type="file" name="loa" accept="image/*"><br><br>
+
+        <label for="surat_keterangan_aktif">Surat Keterangan Aktif:</label><br>
+        <input type="file" name="surat_keterangan_aktif" accept="image/*"><br><br>
+
+        <input type="submit" id="submit" value="Submit"/>
+    </form>
+</body>
+</html>

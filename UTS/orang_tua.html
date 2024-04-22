@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beasiswa Unggulan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fungsi untuk menyimpan nilai formulir ke dalam cookies
+            function setFormCookies() {
+                // Ambil nilai-nilai formulir
+                var nama_lengkap_ayah = $("input[name='nama_lengkap_ayah']").val();
+                var nomor_hp_ayah = $("input[name='nomor_hp_ayah']").val();
+                var pekerjaan_ayah = $("select[name='pekerjaan_ayah']").val();
+                var nama_lengkap_ibu = $("input[name='nama_lengkap_ibu']").val();
+                var nomor_hp_ibu = $("input[name='nomor_hp_ibu']").val();
+                var pekerjaan_ibu = $("select[name='pekerjaan_ibu']").val();
+                var nama_lengkap_wali = $("input[name='nama_lengkap_wali']").val();
+                var nomor_hp_wali = $("input[name='nomor_hp_wali']").val();
+                var pekerjaan_wali = $("select[name='pekerjaan_wali']").val();
+
+                // Simpan nilai-nilai formulir ke dalam cookies
+                document.cookie = "nama_lengkap_ayah=" + nama_lengkap_ayah + ";";
+                document.cookie = "nomor_hp_ayah=" + nomor_hp_ayah + ";";
+                document.cookie = "pekerjaan_ayah=" + pekerjaan_ayah + ";";
+                document.cookie = "nama_lengkap_ibu=" + nama_lengkap_ibu + ";";
+                document.cookie = "nomor_hp_ibu=" + nomor_hp_ibu + ";";
+                document.cookie = "pekerjaan_ibu=" + pekerjaan_ibu + ";";
+                document.cookie = "nama_lengkap_wali=" + nama_lengkap_wali + ";";
+                document.cookie = "nomor_hp_wali=" + nomor_hp_wali + ";";
+                document.cookie = "pekerjaan_wali=" + pekerjaan_wali + ";";
+            }
+
+            // Fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            function fillFormFromCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim().split("=");
+                    var name = cookie[0];
+                    var value = cookie[1];
+                    // Isi nilai formulir dari cookies jika ditemukan sesuai dengan nama input
+                    if (name === "nama_lengkap_ayah") $("input[name='nama_lengkap_ayah']").val(value);
+                    else if (name === "nomor_hp_ayah") $("input[name='nomor_hp_ayah']").val(value);
+                    else if (name === "pekerjaan_ayah") $("input[name='pekerjaan_ayah']").val(value);
+                    else if (name === "nama_lengkap_ibu") $("input[name='nama_lengkap_ibu']").val(value);
+                    else if (name === "nomor_hp_ibu") $("input[name='nomor_hp_ibu']").val(value);
+                    else if (name === "pekerjaan_ibu") $("select[name='pekerjaan_ibu']").val(value);
+                    else if (name === "nama_lengkap_wali") $("input[name='nama_lengkap_wali']").val(value);
+                    else if (name === "nomor_hp_wali") $("input[name='nomor_hp_wali']").val(value);
+                    else if (name === "pekerjaan_wali") $("select[name='pekerjaan_wali']").val(value);
+                }
+            }
+
+            // Panggil fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            fillFormFromCookies();
+
+            $('form[name="formOrtu"]').submit(function(event){
+                // Panggil fungsi untuk menyimpan nilai formulir ke dalam cookies sebelum submit
+                setFormCookies();
+
+                // Validasi formulir
+                var nama_lengkap_ayah = $("input[name='nama_lengkap_ayah']").val();
+                var nomor_hp_ayah = $("input[name='nomor_hp_ayah']").val();
+                var pekerjaan_ayah = $("input[name='pekerjaan_ayah']").val();
+                var nama_lengkap_ibu = $("input[name='nama_lengkap_ibu']").val();
+                var nomor_hp_ibu = $("select[name='nomor_hp_ibu']").val();
+                var pekerjaan_ibu = $("select[name='pekerjaan_ibu']").val();
+
+                if (nama_lengkap_ayah.trim() == "") {
+                    alert("Nama Lengkap Ayah harus diisi");
+                    return false;
+                }
+                if (nomor_hp_ayah.trim() == "") {
+                    alert("Nomor Hp Ayah harus diisi");
+                    return false;
+                }
+                if (pekerjaan_ayah.trim() == "") {
+                    alert("Pekerjaan Ayah harus diisi");
+                    return false;
+                }
+                if (nama_lengkap_ibu() == "") {
+                    alert("Nama Lengkap Ibu harus diisi");
+                    return false;
+                }
+                if (nomor_hp_ibu.trim() == "") {
+                    alert("Nomor Hp Ibu harus diisi");
+                    return false;
+                }
+                if (pekerjaan_ibu() == "") {
+                    alert("Pekerjaan Ibu harus diisi");
+                    return false;
+                }
+                return true; // Lanjutkan submit jika semua validasi lolos
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo">
+        <h1>SIUNGGUL</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Pengajuan Beasiswa 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="pengajuan_beasiswa.html">Beasiswa Tujuan</a>
+                    <a href="pengajuan_beasiswa.php">Data Beasiswa Tujuan</a>
+                </div>
+                <div class="submenu">
+                    <a href="daftar_biaya.html">Daftar Biaya</a>
+                    <a href="daftar_biaya.php">Data Daftar Biaya</a>
+                </div>
+                <div class="submenu">
+                    <a href="berkas_persyaratan.html">Berkas Persyaratan</a>
+                    <a href="berkas_persyaratan.php">Data Berkas Persyaratan</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Biodata 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="biodata.html">Form Diri</a>
+                    <a href="biodata.php">Data Diri</a>
+                </div>
+                <div class="submenu">
+                    <a href="orang_tua.html">Form Orang Tua</a>
+                    <a href="orang_tua.php">Data Orang Tua</a>
+                </div>
+                <div class="submenu">
+                    <a href="organisasi.html">Organisasi</a>
+                    <a href="organisasi.php">Data Organisasi</a>
+                </div>
+                <div class="submenu">
+                    <a href="prestasi.html">Prestasi</a>
+                    <a href="prestasi.php">Data Prestasi</a>
+                </div>
+            </div>
+        </div>
+        <a href="index.html">Beranda</a>
+    </div>
+
+    <form name="formOrtu" method="POST" action="orang_tua.php" enctype="multipart/form-data">
+        <h4>Form Data Orang Tua</h4>
+        <label for="nama_lengkap_ayah">Nama Lengkap Ayah:</label><br>
+        <input type="text" name="nama_lengkap_ayah" size="30"><br><br>
+        
+        <label for="nomor_hp_ayah">Nomor HP Ayah:</label><br>
+        <input type="text" name="nomor_hp_ayah" size="30"><br><br>
+        
+        <label for="pekerjaan_ayah">Pekerjaan Ayah:</label><br>
+        <select name="pekerjaan_ayah">
+            <option value="" disabled selected>Pilih Pekerjaan Ayah</option>
+            <option value="PNS/Pegawai Negara">PNS/Pegawai Negara</option>
+            <option value="Pegawai Swasta">Pegawai Swasta</option>
+            <option value="Wiraswasta">Wiraswasta</option>
+            <option value="Anggota TNI/Polri">Anggota TNI/Polri</option>
+            <option value="Petani/Nelayan">Petani/Nelayan</option>
+            <option value="Buruh">Buruh</option>
+            <option value="Lainnya">Lainnya</option>
+        </select><br><br>
+
+        <label for="nama_lengkap_ibu">Nama Lengkap Ibu:</label><br>
+        <input type="text" name="nama_lengkap_ibu" size="30"><br><br>
+        
+        <label for="nomor_hp_ibu">Nomor HP Ibu:</label><br>
+        <input type="text" name="nomor_hp_ibu" size="30"><br><br>
+        
+        <label for="pekerjaan_ibu">Pekerjaan Ibu:</label><br>
+        <select name="pekerjaan_ibu">
+            <option value="" disabled selected>Pilih Pekerjaan Ibu</option>
+            <option value="PNS/Pegawai Negara">PNS/Pegawai Negara</option>
+            <option value="Pegawai Swasta">Pegawai Swasta</option>
+            <option value="Wiraswasta">Wiraswasta</option>
+            <option value="Anggota TNI/Polri">Anggota TNI/Polri</option>
+            <option value="Petani/Nelayan">Petani/Nelayan</option>
+            <option value="Buruh">Buruh</option>
+            <option value="Lainnya">Lainnya</option>
+        </select><br><br>
+
+        <label for="nama_lengkap_wali">Nama Lengkap Wali:</label><br>
+        <input type="text" name="nama_lengkap_wali" size="30"><br><br>
+        
+        <label for="nomor_hp_wali">Nomor HP Wali:</label><br>
+        <input type="text" name="nomor_hp_wali" size="30"><br><br>
+        
+        <label for="pekerjaan_wali">Pekerjaan Wali:</label><br>
+        <select name="pekerjaan_wali">
+            <option value="" disabled selected>Pilih Pekerjaan Wali</option>
+            <option value="PNS/Pegawai Negara">PNS/Pegawai Negara</option>
+            <option value="Pegawai Swasta">Pegawai Swasta</option>
+            <option value="Wiraswasta">Wiraswasta</option>
+            <option value="Anggota TNI/Polri">Anggota TNI/Polri</option>
+            <option value="Petani/Nelayan">Petani/Nelayan</option>
+            <option value="Buruh">Buruh</option>
+            <option value="Lainnya">Lainnya</option>
+        </select><br><br>
+
+        <input type="submit" id="submit" value="Submit"/>
+    </form>
+</body>
+</html>

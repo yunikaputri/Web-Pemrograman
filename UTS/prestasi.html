@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beasiswa Unggulan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fungsi untuk menyimpan nilai formulir ke dalam cookies
+            function setFormCookies() {
+                // Ambil nilai-nilai formulir
+                var nama_prestasi = $("input[name='nama_prestasi']").val();
+                var bidang_prestasi = $("input[name='bidang_prestasi']").val();
+                var peringkat = $("input[name='peringkat']").val();
+                var tingkat = $("select[name='tingkat']").val();
+                var penyelenggara = $("input[name='penyelenggara']").val();
+                var tahun_mendapatkan = $("select[name='tahun_mendapatkan']").val();
+                var sertifikat = $("input[name='sertifikat']").val();
+
+                // Simpan nilai-nilai formulir ke dalam cookies
+                document.cookie = "nama_prestasi=" + nama_prestasi + ";";
+                document.cookie = "bidang_prestasi=" + bidang_prestasi + ";";
+                document.cookie = "peringkat=" + peringkat + ";";
+                document.cookie = "tingkat=" + tingkat + ";";
+                document.cookie = "penyelenggara=" + penyelenggara + ";";
+                document.cookie = "tahun_mendapatkan=" + tahun_mendapatkan + ";";
+                document.cookie = "sertifikat=" + sertifikat + ";";
+            }
+
+            // Fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            function fillFormFromCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim().split("=");
+                    var name = cookie[0];
+                    var value = cookie[1];
+                    // Isi nilai formulir dari cookies jika ditemukan sesuai dengan nama input
+                    if (name === "nama_prestasi") $("input[name='nama_prestasi']").val(value);
+                    else if (name === "bidang_prestasi") $("input[name='bidang_prestasi']").val(value);
+                    else if (name === "peringkat") $("input[name='peringkat']").val(value);
+                    else if (name === "tingkat") $("select[name='tingkat']").val(value);
+                    else if (name === "penyelenggara") $("input[name='penyelenggara']").val(value);
+                    else if (name === "tahun_mendapatkan") $("select[name='tahun_mendapatkan']").val(value);
+                    else if (name === "sertifikat") $("input[name='sertifikat']").val(value);
+                }
+            }
+
+            // Panggil fungsi untuk mengisi formulir dari cookies saat halaman dimuat
+            fillFormFromCookies();
+
+            $('form[name="formPrestasi"]').submit(function(event){
+                // Panggil fungsi untuk menyimpan nilai formulir ke dalam cookies sebelum submit
+                setFormCookies();
+
+                // Validasi formulir
+                var nama_prestasi = $("input[name='nama_prestasi']").val();
+                var bidang_prestasi = $("input[name='bidang_prestasi']").val();
+                var peringkat = $("input[name='peringkat']").val();
+                var tingkat = $("select[name='tingkat']").val();
+                var penyelenggara = $("input[name='penyelenggara']").val();
+                var tahun_mendapatkan = $("input[name='tahun_mendapatkan']").val();
+                var sertifikat = $("input[name='sertifikat']").val();
+
+                if (nama_prestasi.trim() == "") {
+                    alert("Nama Prestasi harus diisi");
+                    return false;
+                }
+                if (bidang_prestasi.trim() == "") {
+                    alert("Bidang Prestasi harus diisi");
+                    return false;
+                }
+                if (peringkat.trim() == "") {
+                    alert("Peringkat harus diisi");
+                    return false;
+                }
+                if (tingkat() == "") {
+                    alert("Tingkat harus diisi");
+                    return false;
+                }
+                if (penyelenggara.trim() == "") {
+                    alert("Penyelenggara harus diisi");
+                    return false;
+                }
+                if (tahun_mendapatkan() == "") {
+                    alert("Tahun Mendapatkan harus diisi");
+                    return false;
+                }
+                if (sertifikat.trim() == "") {
+                    alert("Sertfikat harus diisi");
+                    return false;
+                }
+                return true; // Lanjutkan submit jika semua validasi lolos
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo">
+        <h1>SIUNGGUL</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Pengajuan Beasiswa 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="pengajuan_beasiswa.html">Beasiswa Tujuan</a>
+                <a href="daftar_biaya.html">Daftar Biaya</a>
+                <a href="berkas_persyaratan.html">Berkas Persyaratan</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Biodata 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="submenu">
+                    <a href="biodata.html">Form Biodata</a>
+                    <a href="biodata.php">Data Diri</a>
+                </div>
+                <div class="submenu">
+                    <a href="orang_tua.html">Form Orang Tua</a>
+                    <a href="orang_tua.php">Data Orang Tua</a>
+                </div>
+                <div class="submenu">
+                    <a href="organisasi.html">Form Organisasi</a>
+                    <a href="organisasi.php">Data Organisasi</a>
+                </div>
+                <div class="submenu">
+                    <a href="prestasi.html">Prestasi</a>
+                    <a href="prestasi.php">Data Prestasi</a>
+                </div>
+            </div>
+        </div>
+        <a href="index.html">Beranda</a>
+    </div>
+
+    <form name="formPrestasi" method="POST" action="prestasi.php" enctype="multipart/form-data">
+        <h4>Form Data Prestasi</h4>
+        <label for="nama_prestasi">Nama Prestasi:</label><br>
+        <input type="text" name="nama_prestasi" size="30"><br><br>
+        
+        <label for="bidang_prestasi">Bidang Prestasi:</label><br>
+        <input type="text" name="bidang_prestasi" size="30"><br><br>
+        
+        <label for="peringkat">Peringkat:</label><br>
+        <input type="text" name="peringkat" size="30"><br><br>
+        
+        <label for="tingkat">Tingkat:</label><br>
+        <select name="tingkat">
+            <option value="" disabled selected>Pilih Tingkat</option>
+            <option value="Kota/Kabupaten">Kota/Kabupaten</option>
+            <option value="Provinsi">Provinsi</option>
+            <option value="Nasional">Nasional</option>
+            <option value="Internasional">Internasional</option>
+        </select><br><br>
+        
+        <label for="penyelenggara">Penyelenggara:</label><br>
+        <input type="text" name="penyelenggara" size="30"><br><br>
+
+        <label for="tahun_mendapatkan">Tahun Mendapatkan:</label><br>
+        <input type="text" name="tahun_mendapatkan" size="30"><br><br>
+
+        <label for="sertifikat">Sertifikat:</label><br>
+        <input type="file" name="sertifikat" accept="image/*"><br><br>
+
+        <input type="submit" id="submit" value="Submit"/>
+    </form>
+</body>
+</html>
